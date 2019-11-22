@@ -4,9 +4,13 @@ import Quote from "./Quote.js"
 
 export default class QuoteSearcher extends Component {
     
-
     state = {
         quotes: []
+    }
+
+    componentDidMount() {
+        fetch("https://quote-garden.herokuapp.com/quotes/search/tree")
+        .catch(console.error)
     }
 
     render () {
