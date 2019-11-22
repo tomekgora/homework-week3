@@ -10,7 +10,20 @@ export default class QuoteSearcher extends Component {
 
     componentDidMount() {
         fetch("https://quote-garden.herokuapp.com/quotes/search/tree")
+        .then(incomingData => incomingData.json())
+        .then (incomingData => {
+            console.group("data from quote API", incomingData)
+            this.updateQuotes(incomingData)
+            console.log("state updated with incomingData?", this.state.quotes)
+           
+        })
         .catch(console.error)
+    }
+
+    updateQuotes(incomingData) {
+        this.setState({
+            quotes: incomingData
+        })
     }
 
     render () {
