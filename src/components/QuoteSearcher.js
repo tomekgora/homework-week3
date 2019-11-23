@@ -47,7 +47,7 @@ export default class QuoteSearcher extends Component {
     }
 
     // this might not be usable
-    countLikeDislike () {
+    countLikeDislike = () => {
         this.state.quotes.likedStatus.reduce((acc,likedOrDisliked) => {
             if(likedOrDisliked === true) {
                 acc.likes += 1
@@ -76,6 +76,8 @@ export default class QuoteSearcher extends Component {
 
 
     render () {
+
+        console.log("countLikeDislike values ", this.countLikeDislike, this.countLikeDislike.likes)
   
         return (
           <div className="quote-searcher">
@@ -86,7 +88,7 @@ export default class QuoteSearcher extends Component {
             :   <ul>
                     {this.state.quotes.map(quote =>
                     <Quote
-                    likedness={quote.likedStatus}
+                    likedStatus={quote.likedStatus}
                     text={quote.quoteText}
                     author={quote.quoteAuthor}
                     key={quote._id}/>)}

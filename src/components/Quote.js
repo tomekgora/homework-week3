@@ -4,7 +4,7 @@ import "./Quote.css"
 export default class Quote extends Component {
     state = {
         likedStatus: null,
-        textColor: "black"
+        textColor: "black",
     }
 
     liked = () => {
@@ -23,8 +23,9 @@ export default class Quote extends Component {
       console.log("the DISLIKE button was clicked, new likedStatus value is", this.state.likedStatus)
     }
 
-    toggleQuoteLiked = () => {
+    toggleQuoteTextFormat = () => {
       this.setState({
+        
         textColor: "green"
       })
     }
@@ -44,7 +45,7 @@ export default class Quote extends Component {
                 }}
             >
 
-            <p>{this.props.text}</p>
+                <p>{this.props.text}</p>
             </div>
             <p className="author">By: {this.props.author}</p>
             <button className="buttons" onClick={this.liked}>:)</button>
