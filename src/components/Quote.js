@@ -6,7 +6,6 @@ export default class Quote extends Component {
     
   static propTypes = {
     id: PropTypes.string.isRequired,
-    likedStatus: PropTypes.any.isRequired,
     setLiked: PropTypes.func.isRequired,
     setDisliked: PropTypes.func.isRequired,
     text: PropTypes.string.isRequired,
@@ -58,7 +57,7 @@ export default class Quote extends Component {
 
 
     render () {
-      console.log("Liked status of quote on render", this.state.likedStatus)
+      console.log("Liked status of quote on render", this.props.likedStatus)
         return (
           <div className="quote">
             <div 
