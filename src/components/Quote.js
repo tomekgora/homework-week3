@@ -1,10 +1,21 @@
 import React, { Component } from "react";
 import "./Quote.css"
+import PropTypes from "prop-types"
 
 export default class Quote extends Component {
-    state = {
-        // likedStatus: null,
-        textColor: "black",
+    
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    likedStatus: PropTypes.any.isRequired,
+    setLiked: PropTypes.func.isRequired,
+    setDisliked: PropTypes.func.isRequired,
+    text: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired
+  }
+
+  state = {
+        // // likedStatus: null,
+        // textColor: "black",
     }
 //Old methods managing internal state
     // liked = () => {
