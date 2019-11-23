@@ -13,7 +13,7 @@ export default class QuoteSearcher extends Component {
         fetch("https://quote-garden.herokuapp.com/quotes/search/tree")
         .then(incomingData => incomingData.json())
         .then (incomingData => {
-            console.group("data from quote API", incomingData)
+            console.log("data from quote API", incomingData)
             this.updateQuotes(incomingData)
             console.log("state updated with incomingData?", this.state.quotes)
            
@@ -23,7 +23,7 @@ export default class QuoteSearcher extends Component {
 
     updateQuotes(incomingData) {
         this.setState({
-            quotes: incomingData
+            quotes: incomingData.results
         })
     }
 
@@ -31,13 +31,17 @@ export default class QuoteSearcher extends Component {
         return (
           <div className="quote-searcher">
             <h1>Quotes</h1>
-            <ul>
-                {this.state.quotes.map(quote =>
+            {this.state.fetching === true
+            ? "Loading..."
+            :   <ul>
+                    {this.state.quotes.map(quote =>
                     <Quote 
                     text={quote.quoteText}
                     author={quote.quoteAuthor}
                     key={quote._id}/>)}
-            </ul>
+                </ul>
+            }
+
           </div>
         );
       }
