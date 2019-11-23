@@ -15,21 +15,20 @@ export default class QuoteSearcher extends Component {
         .then(incomingData => incomingData.json())
         .then(incomingData => {
             console.log("why is incomingData undefined here?", incomingData)
-            const processedData = incomingData.results.map(quote => {return{...quote, likedStatus: null};})
+            const processedData = incomingData
+                .results
+                    .map(quote => {
+                        return {...quote, likedStatus: null};
+                    })
             return processedData
-        })
+        });
+        
         .then(incomingData => {
             console.log("is my likedStatus added?", incomingData)
             this.updateQuotes(incomingData)
             console.log("is the state updated?", this.state.quotes)
         })
-        
-        // .then (incomingData => {
-        //     console.log("data from quote API", incomingData)
-        //     this.updateQuotes(incomingData)
-        //     console.log("state updated with incomingData?", this.state.quotes)
-           
-        
+
         .catch(console.error)
     }
 
