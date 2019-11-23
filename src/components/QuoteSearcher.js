@@ -11,15 +11,9 @@ export default class QuoteSearcher extends Component {
     }
 
     componentDidMount() {
-        this.setState({fetching: true})
-        // console.log("fetching should change to true, value of fetching:", this.state.fetching)
-        this.search()
-        this.setState({fetching: false})
-        // console.log("fetching should be changed to false once state updated, value of fetching:", this.state.fetching)
-
+        // this method should not be left empty, probably
     };
     
-    // _proto_ of fetched data still comes up in the state.quotes, should it?
     updateQuotes(incomingData) {
         this.setState({
             quotes: incomingData
@@ -43,10 +37,10 @@ export default class QuoteSearcher extends Component {
         }); // end of reduce 
     }; // end of method
 
-
-
     search = (searchQuery) => {
         console.log("search is running")
+        this.setState({fetching: true})
+        console.log("fetching should change to true, value of fetching:", this.state.fetching)
         const newQuery = "https://quote-garden.herokuapp.com/quotes/search/" + searchQuery
         fetch(newQuery)
         .then( (incomingData) => {
@@ -64,18 +58,18 @@ export default class QuoteSearcher extends Component {
         .then(incomingData => {
             // console.log("is my likedStatus added?", incomingData)
             this.updateQuotes(incomingData)
+            this.setState({fetching: false})
+            console.log("fetching should be changed to false once state updated, value of fetching:", this.state.fetching)
             // console.log("is the state updated?", this.state.quotes)
         })
         .catch(console.error)
-
-
     };
 
     setLiked = (id) => {
         // console.log("Hi there! Like callback!", id);
         const updatedQuotes = this.state.quotes.map(quote => {
             if (quote._id === id) {
-                // console.log("this is the quote ID", quote._id)
+                // console.log("this is the quote ID, compare", quote._id)
                 // console.log("this is the quote you liked", quote)
                 return {...quote, likedStatus: true};
             } else {

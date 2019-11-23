@@ -40,17 +40,26 @@ export default class Quote extends Component {
     //   :  this.state.textColor: "black"}
       
 
-    toggleQuoteDisliked = () => {}
+    // toggleQuoteColor = () => {
+    //   if (this.props.likedStatus === true) {
+    //      this.setState({textColor: "green"});
+    //   } else if (this.props.likedStatus === false) {
+    //     this.setState({textColor: "red"});
+    //   } else {
+    //   }
+    // }
 
     likedClick = () => {
       console.log("likedClick")
       this.props.setLiked(this.props.id)
+      this.setState({textColor: "green"})
       console.log("Does the liked callback work?", this.props.likedStatus)
     }
     
     dislikedClick = () => {
       console.log("dislikedClick")
       this.props.setDisliked(this.props.id)
+      this.setState({textColor: "red"})
       console.log("Does the disliked callback work?", this.props.likedStatus)
 
     }
@@ -69,7 +78,8 @@ export default class Quote extends Component {
             <div 
                 className="quote-text"
                 style = {{
-                  color: this.state.textColor
+                  color: 
+                  this.state.textColor
                 }}
             >
 
