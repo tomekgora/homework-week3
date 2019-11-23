@@ -6,35 +6,17 @@ export default class QuoteSearcher extends Component {
     
     state = {
         fetching: false,
-        searchQuery: "",
+        // searchQuery: "", don't need to store it in local state
         quotes: []
     }
 
     componentDidMount() {
         this.setState({fetching: true})
-        fetch("https://quote-garden.herokuapp.com/quotes/search/tree")
-        // change value of fetching false/true
-        .then( (incomingData) => {
-            // console.log("fetching should change to true, value of fetching:", this.state.fetching)
-            return incomingData.json()
-        })
-        .then(incomingData => {
-            // console.log("why does incomingData come up undefined here?", incomingData)
-            const processedData = incomingData
-                .results
-                    .map(quote => {
-                        return {...quote, likedStatus: null};
-                    })
-            return processedData
-        })
-        .then(incomingData => {
-            // console.log("is my likedStatus added?", incomingData)
-            this.updateQuotes(incomingData)
-            // console.log("is the state updated?", this.state.quotes)
-            this.setState({fetching:false})
-            // console.log("fetching should be changed to false once state updated, value of fetching:", this.state.fetching)
-        })
-        .catch(console.error)
+        // console.log("fetching should change to true, value of fetching:", this.state.fetching)
+        this.search()
+        this.setState({fetching: false})
+        // console.log("fetching should be changed to false once state updated, value of fetching:", this.state.fetching)
+
     };
     
     // _proto_ of fetched data still comes up in the state.quotes, should it?
@@ -61,12 +43,31 @@ export default class QuoteSearcher extends Component {
         }); // end of reduce 
     }; // end of method
 
-    grabSearchQuery = () => {
 
-    };
 
-    search = (SearchQuery) => {
-        
+    search = (searchQuery) => {
+        console.log("search is running")
+        const newQuery = "https://quote-garden.herokuapp.com/quotes/search/" + searchQuery
+        fetch(newQuery)
+        .then( (incomingData) => {
+            return incomingData.json()
+        })
+        .then(incomingData => {
+            // console.log("why does incomingData come up undefined here?", incomingData)
+            const processedData = incomingData
+                .results
+                    .map(quote => {
+                        return {...quote, likedStatus: null};
+                    })
+            return processedData
+        })
+        .then(incomingData => {
+            // console.log("is my likedStatus added?", incomingData)
+            this.updateQuotes(incomingData)
+            // console.log("is the state updated?", this.state.quotes)
+        })
+        .catch(console.error)
+
 
     };
 

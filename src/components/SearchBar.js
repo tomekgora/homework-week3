@@ -4,7 +4,6 @@ import PropTypes from "prop-types"
 
 export default class SearchBar extends Component {
     
-    // eslint-disable-next-line react/no-typos
     static propTypes = { 
         search: PropTypes.func.isRequired
     }
