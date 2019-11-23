@@ -1,13 +1,21 @@
 import React, { Component } from "react";
-import { directive } from "@babel/types";
+// import { directive } from "@babel/types";
+import PropTypes from "prop-types"
 
 export default class SearchBar extends Component {
+    
+    // eslint-disable-next-line react/no-typos
+    static PropTypes = { 
+        search: PropTypes.func.isRequired
+    }
+    
     state={
-        value: ""
+        searchQuery: ""
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
+        this.props.search(this.state.searchQuery)
     }
 
     handleChange = (event) => {
@@ -20,13 +28,13 @@ export default class SearchBar extends Component {
     render() {
         return (
             <div className="search-bar">
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label>
                         <input 
                         type="text" 
-                        query="query"
+                        name="searchQuery"
                         onChange={this.handleChange}
-                        value={this.state.name}
+                        value={this.state.searchQuery}
                         />
                     </label>
                     <input type="submit" value="Search"/>
