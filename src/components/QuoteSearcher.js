@@ -5,12 +5,13 @@ import Quote from "./Quote.js"
 export default class QuoteSearcher extends Component {
     
     state = {
-        fetching: true,
+        fetching: false,
         quotes: []
     }
 
     componentDidMount() {
         fetch("https://quote-garden.herokuapp.com/quotes/search/tree")
+        // insert conditional statement for fetching false/true
         .then(incomingData => incomingData.json())
         .then (incomingData => {
             console.log("data from quote API", incomingData)
