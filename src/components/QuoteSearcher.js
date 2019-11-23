@@ -15,7 +15,8 @@ export default class QuoteSearcher extends Component {
         .then(incomingData => incomingData.json())
         .then(incomingData => {
             console.log("why is incomingData undefined here?", incomingData)
-            incomingData.results.map(quote => {return{...quote, likedStatus: null};})
+            const processedData = incomingData.results.map(quote => {return{...quote, likedStatus: null};})
+            return processedData
         })
         .then(incomingData => {
             console.log("is my likedStatus added?", incomingData)
@@ -34,7 +35,7 @@ export default class QuoteSearcher extends Component {
 
     updateQuotes(incomingData) {
         this.setState({
-            quotes: incomingData.results
+            quotes: incomingData
         })
     }
 
