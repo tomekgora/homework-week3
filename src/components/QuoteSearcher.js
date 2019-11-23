@@ -7,7 +7,11 @@ export default class QuoteSearcher extends Component {
     state = {
         fetching: false,
         // searchQuery: "", don't need to store it in local state
-        quotes: []
+        quotes: [],
+        totalLikes: {
+            likes: 0,
+            dislikes:0,
+        }
     }
 
     componentDidMount() {
@@ -22,7 +26,7 @@ export default class QuoteSearcher extends Component {
 
     // this might not be usable
     countLikeDislike = () => {
-        this.state.quotes.likedStatus.reduce((acc,likedOrDisliked) => {
+        const totals = this.state.quotes.likedStatus.reduce((acc,likedOrDisliked) => {
             if(likedOrDisliked === true) {
                 acc.likes += 1
             } else if (likedOrDisliked === false) {
@@ -35,6 +39,7 @@ export default class QuoteSearcher extends Component {
             likes: 0,
             dislikes: 0
         }); // end of reduce 
+        this.setState({totalLikes: totals})
     }; // end of method
 
     search = (searchQuery) => {
@@ -97,6 +102,7 @@ export default class QuoteSearcher extends Component {
     }; // setDisliked ends
 
     render () {
+        this.countLikeDislike()
         // console.log("countLikeDislike values ", this.countLikeDislike, this.countLikeDislike.likes)
 
         return (
@@ -105,7 +111,7 @@ export default class QuoteSearcher extends Component {
             <SearchBar
             search = {this.search}
             />
-            <h2>Liked:{this.countLikeDislike.likes} Disliked: {this.countLikeDislike.dislikes} </h2>
+            <h2>Liked:{this.totalLikes.likes} Disliked: {this.totalLikes.dislikes} </h2>
             {this.state.fetching === true
             ? "Loading..."
             :   <ul>
