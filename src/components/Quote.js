@@ -15,22 +15,6 @@ export default class Quote extends Component {
   state = {
         textColor: "black",
     }
-//Old methods managing internal state
-    // liked = () => {
-    //   this.setState({
-    //     likedStatus: true,
-    //     textColor: "green"
-    //   })
-    //   console.log("the LIKE button was clicked, new likedStatus value is", this.state.likedStatus)
-    // }
-
-    // disliked = () => {
-    //   this.setState({
-    //     likedStatus: false,
-    //     textColor: "red"
-    //   })
-    //   console.log("the DISLIKE button was clicked, new likedStatus value is", this.state.likedStatus)
-    // }
 
     // toggleQuoteStyling = () => {
     //   this.props.likedStatus === true
@@ -39,15 +23,6 @@ export default class Quote extends Component {
     //   ? this.state.textColor: "red"
     //   :  this.state.textColor: "black"}
       
-
-    // toggleQuoteColor = () => {
-    //   if (this.props.likedStatus === true) {
-    //      this.setState({textColor: "green"});
-    //   } else if (this.props.likedStatus === false) {
-    //     this.setState({textColor: "red"});
-    //   } else {
-    //   }
-    // }
 
     likedClick = () => {
       console.log("likedClick")
