@@ -25,8 +25,8 @@ export default class QuoteSearcher extends Component {
     };
 
     // this might not be usable
-    countLikeDislike = (quotes) => {
-        const totals = quotes.likedStatus.reduce((acc,likedOrDisliked) => {
+    countLikeDislike = () => {
+        const totals = this.state.quotes.likedStatus.reduce((acc,likedOrDisliked) => {
             if(likedOrDisliked === true) {
                 acc.likes += 1
             } else if (likedOrDisliked === false) {
