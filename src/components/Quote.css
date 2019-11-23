@@ -1,3 +1,7 @@
-.author-and-buttons {
+.author {
+    display: inline-block;
+}
+
+.buttons {
     display: inline-block;
 }
