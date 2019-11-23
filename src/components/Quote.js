@@ -30,8 +30,15 @@ export default class Quote extends Component {
       })
     }
 
-
     toggleQuoteDisliked = () => {}
+
+    likedClick = () => {
+      this.props.setLiked(this.props.key)
+    }
+    
+    dislikedClick = () => {
+      this.props.setDisliked(this.props.key)
+    }
 
 
     render () {
