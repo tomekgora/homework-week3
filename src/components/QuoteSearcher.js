@@ -5,6 +5,7 @@ import Quote from "./Quote.js"
 export default class QuoteSearcher extends Component {
     
     state = {
+        fetching: true
         quotes: []
     }
 
