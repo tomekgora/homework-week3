@@ -33,10 +33,12 @@ export default class Quote extends Component {
     toggleQuoteDisliked = () => {}
 
     likedClick = () => {
+      console.log("likedClick")
       this.props.setLiked(this.props.key)
     }
     
     dislikedClick = () => {
+      console.log("dislikedClick")
       this.props.setDisliked(this.props.key)
     }
 
@@ -55,8 +57,8 @@ export default class Quote extends Component {
                 <p>{this.props.text}</p>
             </div>
             <p className="author">By: {this.props.author}</p>
-            <button className="buttons" onClick={this.liked}>:)</button>
-            <button className="buttons" onClick={this.disliked}>:(</button>
+            <button className="buttons" onClick={this.likedClick}>:)</button>
+            <button className="buttons" onClick={this.dislikedClick}>:(</button>
           </div>
         )
       }
