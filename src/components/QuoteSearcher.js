@@ -68,32 +68,31 @@ export default class QuoteSearcher extends Component {
         console.log("Hi there! Like callback!", id);
         const updatedQuotes = this.state.quotes.map(quote => {
             if (quote._id === id) {
-                console.log("this is the quote ID", quote._id)
-                console.log("this is the quote you liked", quote)
-                console.log("how does the quote look like now",{...quote, likedStatus: true} )
+                // console.log("this is the quote ID", quote._id)
+                // console.log("this is the quote you liked", quote)
                 return {...quote, likedStatus: true};
             } else {
                 return quote;
             }
         });
         this.setState({quotes: updatedQuotes});
-        console.log("check if the likeStatus of the quote changed", this.state.quotes)
+        // console.log("check if the likeStatus of the quote changed", this.state.quotes)
 
         
     }; // setLiked ends
 
     setDisliked = (id) => {
-        console.log("Hi there! Dislike callback!", id);
+        // console.log("Hi there! Dislike callback!", id);
         const updatedQuotes = this.state.quotes.map(quote => {
             if (quote._id === id) {
-                console.log("How does the quote look like",{...quote, likedStatus: false})
+                // console.log("How does the quote look like",{...quote, likedStatus: false})
                 return {...quote, likedStatus: false};
             } else {
                 return quote;
             }
         });
         this.setState({quotes: updatedQuotes});
-        console.log("Lets see if the likedStatus changed", this.state.quotes)
+        // console.log("Lets see if the likedStatus changed", this.state.quotes)
     }; // setDisliked ends
 
     render () {

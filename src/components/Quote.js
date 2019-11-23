@@ -13,8 +13,7 @@ export default class Quote extends Component {
   }
 
   state = {
-        // // likedStatus: null,
-        // textColor: "black",
+        textColor: "black",
     }
 //Old methods managing internal state
     // liked = () => {
@@ -33,12 +32,13 @@ export default class Quote extends Component {
     //   console.log("the DISLIKE button was clicked, new likedStatus value is", this.state.likedStatus)
     // }
 
-    toggleQuoteTextFormat = () => {
-      this.setState({
-        
-        textColor: "green"
-      })
-    }
+    // toggleQuoteStyling = () => {
+    //   this.props.likedStatus === true
+    //   ? this.state.textColor: "green"
+    //   : this.props.likedStatus === false
+    //   ? this.state.textColor: "red"
+    //   :  this.state.textColor: "black"}
+      
 
     toggleQuoteDisliked = () => {}
 
@@ -57,7 +57,13 @@ export default class Quote extends Component {
 
 
     render () {
-      console.log("Liked status of quote on render", this.props.likedStatus)
+
+      // this.props.likedStatus === true
+      // ? this.state.color: "green"
+      // : this.props.likedStatus === false
+      // ? this.state.color: "red"
+      // : this.state.color: "black" 
+      // console.log("Liked status of quote on render", this.props.likedStatus)
         return (
           <div className="quote">
             <div 
