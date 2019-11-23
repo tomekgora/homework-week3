@@ -5,7 +5,7 @@ import PropTypes from "prop-types"
 export default class SearchBar extends Component {
     
     // eslint-disable-next-line react/no-typos
-    static PropTypes = { 
+    static propTypes = { 
         search: PropTypes.func.isRequired
     }
     
@@ -16,6 +16,9 @@ export default class SearchBar extends Component {
     handleSubmit = (event) => {
         event.preventDefault()
         this.props.search(this.state.searchQuery)
+        this.setState({
+            searchQuery: " "
+        })
     }
 
     handleChange = (event) => {
@@ -23,7 +26,6 @@ export default class SearchBar extends Component {
             [event.target.name]: event.target.value
         })
     }
-
 
     render() {
         return (
