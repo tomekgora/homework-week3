@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Quote from "./Quote.js"
-
+import SearchBar from "./SearchBar.js"
 
 export default class QuoteSearcher extends Component {
     
@@ -101,6 +101,7 @@ export default class QuoteSearcher extends Component {
         return (
           <div className="quote-searcher">
             <h1>Quotes</h1>
+            <SearchBar/>
             <h2>Liked:{this.countLikeDislike.likes} Disliked: {this.countLikeDislike.dislikes} </h2>
             {this.state.fetching === true
             ? "Loading..."
