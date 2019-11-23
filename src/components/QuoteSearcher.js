@@ -13,12 +13,22 @@ export default class QuoteSearcher extends Component {
         fetch("https://quote-garden.herokuapp.com/quotes/search/tree")
         // insert conditional statement for fetching false/true
         .then(incomingData => incomingData.json())
-        .then (incomingData => {
-            console.log("data from quote API", incomingData)
-            this.updateQuotes(incomingData)
-            console.log("state updated with incomingData?", this.state.quotes)
-           
+        .then(incomingData => {
+            console.log("why is incomingData undefined here?", incomingData)
+            incomingData.results.map(quote => {return{...quote, likedStatus: null};})
         })
+        .then(incomingData => {
+            console.log("is my likedStatus added?", incomingData)
+            this.updateQuotes(incomingData)
+            console.log("is the state updated?", this.state.quotes)
+        })
+        
+        // .then (incomingData => {
+        //     console.log("data from quote API", incomingData)
+        //     this.updateQuotes(incomingData)
+        //     console.log("state updated with incomingData?", this.state.quotes)
+           
+        
         .catch(console.error)
     }
 
