@@ -64,10 +64,10 @@ export default class QuoteSearcher extends Component {
     }; // end of method
 
 
-    setLiked = (key) => {
-        console.log("Hi there! Like callback!", key);
+    setLiked = (id) => {
+        console.log("Hi there! Like callback!", id);
         const updatedQuotes = this.state.quotes.map(quote => {
-            if (quote.key === key) {
+            if (quote._id === id) {
                 return {...quote, likedStatus: true};
             } else {
                 return quote;
@@ -76,20 +76,21 @@ export default class QuoteSearcher extends Component {
         this.setState({quotes: updatedQuotes});
     }; // setLiked ends
 
-    setDisliked = (key) => {
-        console.log("Hi there! Dislike callback!", key);
+    setDisliked = (id) => {
+        console.log("Hi there! Dislike callback!", id);
         const updatedQuotes = this.state.quotes.map(quote => {
-            if (quote.key === key) {
+            if (quote._id === id) {
                 return {...quote, likedStatus: false};
             } else {
                 return quote;
             }
         });
         this.setState({quotes: updatedQuotes});
+        console.log("Lets see if the likedStatus changed", this.state.quotes)
     }; // setDisliked ends
 
     render () {
-        console.log("countLikeDislike values ", this.countLikeDislike, this.countLikeDislike.likes)
+        // console.log("countLikeDislike values ", this.countLikeDislike, this.countLikeDislike.likes)
 
         return (
           <div className="quote-searcher">
@@ -103,6 +104,7 @@ export default class QuoteSearcher extends Component {
                     likedStatus={quote.likedStatus}
                     text={quote.quoteText}
                     author={quote.quoteAuthor}
+                    id={quote._id}
                     key={quote._id}
                     setLiked={this.setLiked}
                     setDisliked={this.setDisliked}
